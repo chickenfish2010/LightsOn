@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D519AB31-217A-4E24-A40E-BBA346BB8AC2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Lights On</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>54A0C8B1FE51546D0A8FF3E31E8D37D6EEDA4CB6</key>
+		<string>https://github.com/chickenfish2010/LightsOn.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Lights On.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>54A0C8B1FE51546D0A8FF3E31E8D37D6EEDA4CB6</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/chickenfish2010/LightsOn.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>54A0C8B1FE51546D0A8FF3E31E8D37D6EEDA4CB6</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>54A0C8B1FE51546D0A8FF3E31E8D37D6EEDA4CB6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>LightsOn</string>
+		</dict>
+	</array>
+</dict>
+</plist>
