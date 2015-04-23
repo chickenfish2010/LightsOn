@@ -10,7 +10,22 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet var WinLabel: UILabel!
+    @IBOutlet var ClickLabel: UILabel!
     @IBOutlet var Lights: [UIButton]!
+    
+    var clickCount = 0;
+    
+    @IBAction func ResetGame(sender: AnyObject) {
+        WinLabel.text = ""
+        for (var i = 0; i < 9; i++)
+        {
+            Lights[i].enabled = true;
+            ClickLabel.text = "Move Count: 0";
+            clickCount = 0;
+            randomizeBoard();
+        }
+    }
     @IBAction func LightFlipped(sender: UIButton) {
         if(sender == Lights[0])
         {
@@ -89,11 +104,29 @@ class ViewController: UIViewController {
             LightSwitch(Lights[7]);
             LightSwitch(Lights[8]);
         }
+        
+        clickCount++;
+        ClickLabel.text = "Move Count: " + String(clickCount);
+        
+        if (checkForWin() == true)
+        {
+            WinLabel.text = "You Win!"
+            for (var i = 0; i < 9; i++)
+            {
+                Lights[i].enabled = false;
+            }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        randomizeBoard();
+        for (var i = 0; i < 9; i++)
+        {
+            Lights[i].layer.borderWidth = 3.0
+            Lights[i].layer.borderColor = UIColor.blackColor().CGColor
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -110,6 +143,33 @@ class ViewController: UIViewController {
         {
             button.backgroundColor = UIColor.whiteColor()
         }
+    }
+    
+    func checkForWin () -> Bool {
+        var win = true
+        for (var i = 0; i < 9; i++)
+        {
+            if (Lights[i].backgroundColor != UIColor.whiteColor())
+            {
+                win = false
+            }
+        }
+        return win
+    }
+    
+    func randomizeBoard () {
+        for (var i = 0; i < 9; i++)
+        {
+            if(Int(arc4random_uniform(2)) == 1)
+            {
+                Lights[i].backgroundColor = UIColor.whiteColor()
+            }
+            else
+            {
+                Lights[i].backgroundColor = UIColor.blackColor()
+            }
+        }
+
     }
 }
 
