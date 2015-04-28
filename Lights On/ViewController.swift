@@ -12,12 +12,24 @@ class ViewController: UIViewController {
     
     @IBOutlet var WinLabel: UILabel!
     @IBOutlet var ClickLabel: UILabel!
+    @IBOutlet var RecordLabel: UILabel!
+    @IBOutlet var GamesWonLabel: UILabel!
+    @IBOutlet var GamesSkippedLabel: UILabel!
     @IBOutlet var Lights: [UIButton]!
     
     var clickCount = 0;
+    var clickRecord = 10000;
+    var randomControl = 0;
+    var gamesWon = 0;
+    var gamesSkipped = 0;
     
     @IBAction func ResetGame(sender: AnyObject) {
         WinLabel.text = ""
+        if (Lights[0].enabled == true)
+        {
+            gamesSkipped++;
+            GamesSkippedLabel.text = "Games Skipped: " + String(gamesSkipped);
+        }
         for (var i = 0; i < 9; i++)
         {
             Lights[i].enabled = true;
@@ -110,10 +122,13 @@ class ViewController: UIViewController {
         
         if (checkForWin() == true)
         {
-            WinLabel.text = "You Win!"
+            WinLabel.text = "You Win!";
+            gamesWon++;
+            GamesWonLabel.text = "Games Won: " + String(gamesWon);
             for (var i = 0; i < 9; i++)
             {
                 Lights[i].enabled = false;
+                setRecordClick();
             }
         }
     }
@@ -124,8 +139,8 @@ class ViewController: UIViewController {
         randomizeBoard();
         for (var i = 0; i < 9; i++)
         {
-            Lights[i].layer.borderWidth = 3.0
-            Lights[i].layer.borderColor = UIColor.blackColor().CGColor
+            Lights[i].layer.borderWidth = 3.0;
+            Lights[i].layer.borderColor = UIColor.blackColor().CGColor;
         }
     }
 
@@ -135,23 +150,23 @@ class ViewController: UIViewController {
     }
     
     func LightSwitch(button: UIButton) {
-        if(button.backgroundColor == UIColor.whiteColor())
+        if(button.backgroundColor == UIColor.yellowColor())
         {
-            button.backgroundColor = UIColor.blackColor()
+            button.backgroundColor = UIColor.blackColor();
         }
         else
         {
-            button.backgroundColor = UIColor.whiteColor()
+            button.backgroundColor = UIColor.yellowColor();
         }
     }
     
     func checkForWin () -> Bool {
-        var win = true
+        var win = true;
         for (var i = 0; i < 9; i++)
         {
-            if (Lights[i].backgroundColor != UIColor.whiteColor())
+            if (Lights[i].backgroundColor != UIColor.yellowColor())
             {
-                win = false
+                win = false;
             }
         }
         return win
@@ -162,14 +177,30 @@ class ViewController: UIViewController {
         {
             if(Int(arc4random_uniform(2)) == 1)
             {
-                Lights[i].backgroundColor = UIColor.whiteColor()
+                Lights[i].backgroundColor = UIColor.yellowColor();
+                randomControl++;
             }
             else
             {
-                Lights[i].backgroundColor = UIColor.blackColor()
+                Lights[i].backgroundColor = UIColor.blackColor();
+            }
+            
+            if (randomControl == 9)
+            {
+                randomControl = 0;
+                randomizeBoard();
             }
         }
 
+    }
+    
+    func setRecordClick () {
+        if (clickCount != 0 && clickCount < clickRecord)
+        {
+            clickRecord = clickCount;
+            RecordLabel.text = "Record Clicks: " + String(clickRecord);
+
+        }
     }
 }
 
