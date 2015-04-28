@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         for (var i = 0; i < 9; i++)
         {
             Lights[i].enabled = true;
-            ClickLabel.text = "Move Count: 0";
+            ClickLabel.text = "Move Count: ";
             clickCount = 0;
             randomizeBoard();
         }
@@ -198,7 +198,7 @@ class ViewController: UIViewController {
         if (clickCount != 0 && clickCount < clickRecord)
         {
             clickRecord = clickCount;
-            RecordLabel.text = "Record Clicks: " + String(clickRecord);
+            RecordLabel.text = "Record Count: " + String(clickRecord);
 
         }
     }
